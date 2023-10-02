@@ -1,6 +1,7 @@
 
 export default function Hero({handleChange, value, handleAdd}){
 
+    
     return(
         <div className="grid justify-items-center gap-10 mt-[8%]">
             <h1 className="text-slate-200 text-9xl">todos</h1>

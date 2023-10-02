@@ -11,6 +11,7 @@ export default function App(){
   const [allToDoItems, setAllItems] = useState(
           ()=> JSON.parse(localStorage.getItem("todos")) || []
         );
+        
 
   useEffect(()=>{
       localStorage.setItem("todos", JSON.stringify(allToDoItems));
