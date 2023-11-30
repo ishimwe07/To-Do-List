@@ -13,6 +13,7 @@ export default function EditComponent({ oldValue, id }) {
   };
   const submitEdit = (event) => {
     event.preventDefault();
+    if(value.split("").every(character => character === " ")) return;
     dispatch(updateToDo({ id, value }));
     setValue("");
   };

@@ -23,6 +23,7 @@ export default function HeroSection() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if(todo.value.split("").every(character => character === " ")) return;
     dispatch(addToDos({ ...todo, id: nanoid() }));
     setTodo({ id: "", value: "", isEditing: false, checked: false });
   };

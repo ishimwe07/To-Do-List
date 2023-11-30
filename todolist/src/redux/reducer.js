@@ -11,14 +11,14 @@ const addToDosReducer = createSlice({
     },
     toggleChecked: (state, action) => {
       const index = state.findIndex((todo) => todo.id === action.payload.id);
-      state[index].checked = action.payload.checked;
+      state[index].checked = !state[index].checked;
     },
     deleteToDo: (state, action) => {
       return state.filter((todo) => todo.id !== action.payload.id);
     },
     toggleIsEditing: (state, action) => {
       const index = state.findIndex((todo) => todo.id === action.payload.id);
-      state[index].isEditing = action.payload.isEditing;
+      state[index].isEditing = !state[index].isEditing;
     },
     updateToDo: (state, action) => {
       const index = state.findIndex((todo) => todo.id === action.payload.id);

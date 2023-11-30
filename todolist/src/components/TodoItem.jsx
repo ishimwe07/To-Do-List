@@ -11,7 +11,7 @@ export default function TodoItem({ id, value, checked }) {
             type="checkbox"
             name="todo"
             checked={checked}
-            onChange={() => dispatch(toggleChecked({ id, checked: !checked }))}
+            onChange={() => dispatch(toggleChecked({ id}))}
             className="text-slate-800"
           />
           <label className={checked ? "line-through" : ""}>{value}</label>
@@ -20,7 +20,7 @@ export default function TodoItem({ id, value, checked }) {
       <span className="gap-8 items-center hidden group-hover:flex">
         <button
           type=""
-          onClick={() => dispatch(toggleIsEditing({ id, isEditing: true }))}
+          onClick={() => dispatch(toggleIsEditing({ id }))}
         >
           <img
             src="/editIcon.svg"
