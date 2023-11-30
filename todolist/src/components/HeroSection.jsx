@@ -52,7 +52,7 @@ export default function HeroSection() {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           className={"border-slate-400 px-5 w-full py-2 rounded-full"}
-          sign={"Add"}
+          sign="Add"
         />
 
         <p className="text-xl sm:text-3xl font-semibold items-start py-10 px-10">

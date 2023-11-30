@@ -24,7 +24,7 @@ export default function EditComponent({ oldValue, id }) {
       handleChange={(event) => handleChange(event)}
       handleSubmit={submitEdit}
       className={"border-slate-400 px-5 w-full py-2"}
-      sign={"Update"}
+      sign="Update"
     />
   );
 }
