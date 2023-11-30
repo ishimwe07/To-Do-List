@@ -1,10 +1,13 @@
 import { useState } from "react"
 import FormComponent from "./FormComponent"
+import { useDispatch } from "react-redux"
+import { updateToDo } from "../redux/reducer"
 
 // eslint-disable-next-line react/prop-types
-export default function EditComponent({oldValue, id, handleUpdateToDo}) {
+export default function EditComponent({oldValue, id}) {
 
   const [value, setValue] = useState(oldValue)
+  const dispatch = useDispatch()
 
     const handleChange = (event) => {
       const {value} = event.target
@@ -12,10 +15,10 @@ export default function EditComponent({oldValue, id, handleUpdateToDo}) {
     }
     const submitEdit = (event) => {
       event.preventDefault()
-      handleUpdateToDo(id, value)
+      dispatch(updateToDo({id, value}))
       setValue("")
     }
-
+    // {...item, value: newToDo, isEditing: !item.isEditing}
   return (
     <FormComponent
     value={value}

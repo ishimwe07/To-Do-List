@@ -10,6 +10,7 @@ export default function FormComponent({
     <form className="flex group" onSubmit={(event) => handleSubmit(event)}>
       <input
         type="text"
+        required
         placeholder="Enter Your todo item"
         className={`border-2 ${className}`}
         value={value}

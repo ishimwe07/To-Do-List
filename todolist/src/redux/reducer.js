@@ -1,16 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState =  []
+const initialState = JSON.parse(localStorage.getItem("toDos")) || [];
 const addToDosReducer = createSlice({
-    name: "todos",
-    initialState,
-    reducers: {
-        addToDos: (state, action) => {
-            state.push(action.payload)
-            return state
-        }
-    }
-})
+  name: "todos",
+  initialState,
+  reducers: {
+    addToDos: (state, action) => {
+      const newToDo = action.payload;
+      state.push(newToDo);
+    },
+    toggleChecked: (state, action) => {
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      state[index].checked = action.payload.checked;
+    },
+    deleteToDo: (state, action) => {
+      return state.filter((todo) => todo.id !== action.payload.id);
+    },
+    toggleIsEditing: (state, action) => {
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      state[index].isEditing = action.payload.isEditing;
+    },
+    updateToDo: (state, action) => {
+      const index = state.findIndex((todo) => todo.id === action.payload.id);
+      state[index].value = action.payload.value;
+      state[index].isEditing = false;
+    },
+  },
+});
 
-export const {addToDos} = addToDosReducer.actions
-export const reducer = addToDosReducer.reducer
+export const {
+  addToDos,
+  toggleChecked,
+  deleteToDo,
+  toggleIsEditing,
+  updateToDo,
+} = addToDosReducer.actions;
+export default addToDosReducer.reducer;
