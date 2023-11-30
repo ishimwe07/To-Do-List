@@ -19,6 +19,14 @@ export default function HeroSection() {
     const { value } = event.target;
     setTodo((prevValue) => ({ ...prevValue, value }));
   };
+
+  const handleCheck = (id) => {
+    setTodoItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
   
   const handleEdit = (event, id) => {
     event.preventDefault()
@@ -41,6 +49,8 @@ export default function HeroSection() {
     <TodoItem
       key={item.id}
       value={item.value}
+      checked={item.checked}
+      handleCheck={() => handleCheck(item.id)}
       deleteTodo={() => deleteTodo(item.id)}
       handleEdit={(event) => handleEdit(event, item.id)}
     />)
