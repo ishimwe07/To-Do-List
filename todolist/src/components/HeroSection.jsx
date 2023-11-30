@@ -3,42 +3,42 @@ import TodoItem from "./TodoItem";
 import { nanoid } from "nanoid";
 import FormComponent from "./FormComponent";
 import EditComponent from "./EditComponent";
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { addToDos } from "../redux/reducer";
 export default function HeroSection() {
-  const [todo, setTodo] = useState({ id: "", value: "", isEditing: false, checked: false });
+  const [todo, setTodo] = useState({
+    id: "",
+    value: "",
+    isEditing: false,
+    checked: false,
+  });
 
-  const todos = useSelector((state) => state.todos)
+  const todos = useSelector((state) => state.todos);
 
   useEffect(() => {
-    localStorage.setItem("toDos", JSON.stringify(todos))
-  }, [todos])
-  
-  const dispatch = useDispatch()
+    localStorage.setItem("toDos", JSON.stringify(todos));
+  }, [todos]);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addToDos({ ...todo, id: nanoid()}))
+    dispatch(addToDos({ ...todo, id: nanoid() }));
     setTodo({ id: "", value: "", isEditing: false, checked: false });
   };
-  
+
   const handleChange = (event) => {
     const { value } = event.target;
     setTodo((prevValue) => ({ ...prevValue, value }));
   };
 
- 
-  const ToDoItemsToDisplay = todos.map((item) => (
-    item.isEditing ? (
-      <EditComponent key={item.id} id={item.id} oldValue={item.value}  />
-    ):(
-    <TodoItem
-      key={item.id}
-      id={item.id}
-      value={item.value}
-      checked={item.checked}
-    />)
-  ));
+  const ToDoItemsToDisplay = todos.map(({ id, value, checked, isEditing }) =>
+    isEditing ? (
+      <EditComponent key={id} id={id} oldValue={value} />
+    ) : (
+      <TodoItem key={id} id={id} value={value} checked={checked} />
+    )
+  );
 
   return (
     <div className="flex flex-col items-center h-full justify-center">
