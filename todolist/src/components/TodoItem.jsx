@@ -6,7 +6,7 @@ export default function TodoItem({ id, value, checked }) {
   return (
     <div className="flex items-center justify-between group hover:bg-indigo-100 py-2 rounded-lg px-5">
       <form>
-        <span className="space-x-5 text-xl font-sans ">
+        <span className="space-x-5 text-xl font-sans">
           <input
             type="checkbox"
             name="todo"

@@ -23,7 +23,7 @@ export default function EditComponent({ oldValue, id }) {
       value={value}
       handleChange={(event) => handleChange(event)}
       handleSubmit={submitEdit}
-      className={"border-slate-400 px-5 w-full py-2 "}
+      className={"border-slate-400 px-5 w-full py-2"}
       sign={"Update"}
     />
   );
